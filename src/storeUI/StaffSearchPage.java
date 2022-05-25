@@ -24,21 +24,21 @@ import java.awt.SystemColor;
 public class StaffSearchPage {
 
 	private JFrame frame;
-	private JTable empTable;
-	private JTextField idInput;
+	private JTable StaffTable;
+	private JTextField SearchTextField;
 	private JButton backbtn;
-	private JPanel panel;
+	private JPanel StaffPanel;
 	private JScrollPane scrollPane;
-	private JButton btnNewButton;
-	private JComboBox comboBox;
+	private JButton RegisterButton;
+	private JComboBox SearchOptionSel;
 	private JTextPane txtpnId;
 	private JTextPane txtpnId_1;
 	private JTextPane txtpnId_2;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
+	private JTextField phoneTextField;
+	private JTextField nameTextField;
+	private JTextField idTextField;
+	private JButton AmendButton;
+	private JButton DeleteButton;
 
 	/**
 	 * Launch the application.
@@ -72,17 +72,17 @@ public class StaffSearchPage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		idInput = new JTextField();
-		idInput.setForeground(Color.BLACK);
-		idInput.setBounds(99, 11, 167, 21);
-		frame.getContentPane().add(idInput);
-		idInput.setColumns(10);
+		SearchTextField = new JTextField();
+		SearchTextField.setForeground(Color.BLACK);
+		SearchTextField.setBounds(99, 11, 167, 21);
+		frame.getContentPane().add(SearchTextField);
+		SearchTextField.setColumns(10);
 		
-		JButton checkbtn = new JButton("\uC870\uD68C");
-		checkbtn.setBounds(278, 10, 75, 23);
-		frame.getContentPane().add(checkbtn);
+		JButton SearchButton = new JButton("조회");
+		SearchButton.setBounds(278, 10, 75, 23);
+		frame.getContentPane().add(SearchButton);
 		
-		backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		backbtn = new JButton("뒤로가기");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_UI mmframe = new Manager_UI();
@@ -93,17 +93,17 @@ public class StaffSearchPage {
 		backbtn.setBounds(359, 10, 93, 23);
 		frame.getContentPane().add(backbtn);
 		
-		panel = new JPanel();
-		panel.setBounds(12, 36, 440, 191);
-		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		StaffPanel = new JPanel();
+		StaffPanel.setBounds(12, 36, 440, 191);
+		frame.getContentPane().add(StaffPanel);
+		StaffPanel.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
-		panel.add(scrollPane, BorderLayout.CENTER);
+		StaffPanel.add(scrollPane, BorderLayout.CENTER);
 		
-		empTable = new JTable();
-		scrollPane.setViewportView(empTable);
-		empTable.setModel(new DefaultTableModel(
+		StaffTable = new JTable();
+		scrollPane.setViewportView(StaffTable);
+		StaffTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"", "", ""},
 				{null, null, null},
@@ -123,7 +123,7 @@ public class StaffSearchPage {
 				{null, null, null},
 			},
 			new String[] {
-				"ID", "\uC774\uB984", "\uC804\uD654\uBC88\uD638"
+				"ID", "이름", "전화번호"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -133,17 +133,17 @@ public class StaffSearchPage {
 				return columnEditables[column];
 			}
 		});
-		empTable.getColumnModel().getColumn(0).setPreferredWidth(40);
-		empTable.getColumnModel().getColumn(1).setPreferredWidth(15);
+		StaffTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+		StaffTable.getColumnModel().getColumn(1).setPreferredWidth(15);
 		
-		btnNewButton = new JButton("등록");
-		btnNewButton.setBounds(355, 237, 97, 23);
-		frame.getContentPane().add(btnNewButton);
+		RegisterButton = new JButton("등록");
+		RegisterButton.setBounds(355, 237, 97, 23);
+		frame.getContentPane().add(RegisterButton);
 		
-		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ID", "이름", "전화번호"}));
-		comboBox.setBounds(12, 10, 75, 23);
-		frame.getContentPane().add(comboBox);
+		SearchOptionSel = new JComboBox();
+		SearchOptionSel.setModel(new DefaultComboBoxModel(new String[] {"ID", "이름", "전화번호"}));
+		SearchOptionSel.setBounds(12, 10, 75, 23);
+		frame.getContentPane().add(SearchOptionSel);
 		
 		txtpnId = new JTextPane();
 		txtpnId.setBackground(UIManager.getColor("CheckBox.background"));
@@ -163,28 +163,28 @@ public class StaffSearchPage {
 		txtpnId_2.setBounds(12, 301, 55, 21);
 		frame.getContentPane().add(txtpnId_2);
 		
-		textField = new JTextField();
-		textField.setBounds(79, 301, 268, 21);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		phoneTextField = new JTextField();
+		phoneTextField.setBounds(79, 301, 268, 21);
+		frame.getContentPane().add(phoneTextField);
+		phoneTextField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(79, 270, 268, 21);
-		frame.getContentPane().add(textField_1);
+		nameTextField = new JTextField();
+		nameTextField.setColumns(10);
+		nameTextField.setBounds(79, 270, 268, 21);
+		frame.getContentPane().add(nameTextField);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(79, 237, 268, 21);
-		frame.getContentPane().add(textField_2);
+		idTextField = new JTextField();
+		idTextField.setColumns(10);
+		idTextField.setBounds(79, 237, 268, 21);
+		frame.getContentPane().add(idTextField);
 		
-		btnNewButton_1 = new JButton("수정");
-		btnNewButton_1.setBounds(355, 270, 97, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		AmendButton = new JButton("수정");
+		AmendButton.setBounds(355, 270, 97, 23);
+		frame.getContentPane().add(AmendButton);
 		
-		btnNewButton_2 = new JButton("삭제");
-		btnNewButton_2.setBounds(355, 301, 97, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		DeleteButton = new JButton("삭제");
+		DeleteButton.setBounds(355, 301, 97, 23);
+		frame.getContentPane().add(DeleteButton);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

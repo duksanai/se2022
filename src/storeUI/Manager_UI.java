@@ -44,6 +44,7 @@ public class Manager_UI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("관리자");
 		frame.setBounds(100, 100, 512, 371);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -54,71 +55,71 @@ public class Manager_UI {
 		frame.getContentPane().add(info);
 		info.setLayout(new BorderLayout(0, 0));
 		
-		JTextPane modeTxt = new JTextPane();
-		modeTxt.setEditable(false);
-		modeTxt.setFont(new Font("굴림", Font.PLAIN, 40));
-		modeTxt.setText("\uAD00\uB9AC\uC790\uBAA8\uB4DC");
-		info.add(modeTxt);
+		JTextPane infotxt = new JTextPane();
+		infotxt.setEditable(false);
+		infotxt.setFont(new Font("굴림", Font.PLAIN, 40));
+		infotxt.setText("관리자모드");
+		info.add(infotxt);
 		
 		JTextPane date = new JTextPane();
 		date.setEditable(false);
-		date.setText("2022-05-04 13:04:23 (\uC218)");
+		date.setText("2022-05-04 13:04:23 (수)");//현재 시간 설정
 		info.add(date, BorderLayout.EAST);
 		
-		JButton salesbtn = new JButton("\uB9E4\uC7A5\uB9E4\uCD9C\uC870\uD68C");
-		salesbtn.addActionListener(new ActionListener() {
+		JButton move_sales = new JButton("매장매출조회");
+		move_sales.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SalesCheck scframe = new SalesCheck();
 				scframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		salesbtn.setBounds(12, 75, 116, 246);
-		frame.getContentPane().add(salesbtn);
+		move_sales.setBounds(12, 75, 116, 246);
+		frame.getContentPane().add(move_sales);
 		
-		JButton workbtn = new JButton("\uADFC\uBB34\uD604\uD669\uC870\uD68C");
-		workbtn.addActionListener(new ActionListener() {
+		JButton move_work_result = new JButton("근무현황조회");
+		move_work_result.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				WorkTimePage ewframe = new WorkTimePage();
 				ewframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		workbtn.setBounds(268, 75, 116, 246);
-		frame.getContentPane().add(workbtn);
+		move_work_result.setBounds(268, 75, 116, 246);
+		frame.getContentPane().add(move_work_result);
 		
-		JButton employeebtn = new JButton("직원 관리");
-		employeebtn.addActionListener(new ActionListener() {
+		JButton move_employee_search = new JButton("직원 관리");
+		move_employee_search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				StaffSearchPage ecframe = new StaffSearchPage();
 				ecframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		employeebtn.setBounds(140, 75, 116, 246);
-		frame.getContentPane().add(employeebtn);
+		move_employee_search.setBounds(140, 75, 116, 246);
+		frame.getContentPane().add(move_employee_search);
 		
-		JButton pwChangebtn = new JButton("\uC554\uD638 \uBCC0\uACBD");
-		pwChangebtn.addActionListener(new ActionListener() {
+		JButton move_change_password = new JButton("암호 변경");
+		move_change_password.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PasswordChange pcframe = new PasswordChange();
 				pcframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		pwChangebtn.setBounds(396, 75, 90, 114);
-		frame.getContentPane().add(pwChangebtn);
+		move_change_password.setBounds(396, 75, 90, 114);
+		frame.getContentPane().add(move_change_password);
 		
-		JButton backbtn = new JButton("메인화면");
-		backbtn.addActionListener(new ActionListener() {
+		JButton move_main = new JButton("메인화면");
+		move_main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}
 		});
-		backbtn.setBounds(396, 207, 90, 114);
-		frame.getContentPane().add(backbtn);
+		move_main.setBounds(396, 207, 90, 114);
+		frame.getContentPane().add(move_main);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

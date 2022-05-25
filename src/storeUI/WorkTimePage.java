@@ -19,11 +19,11 @@ import javax.swing.JScrollPane;
 public class WorkTimePage {
 
 	private JFrame frame;
-	private JTable empTable;
-	private JTextField empName;
-	private JTextField date;
+	private JTable workTable;
+	private JTextField nameTextField;
+	private JTextField DateTextField;
 	private JButton backbtn;
-	private JPanel panel;
+	private JPanel infoPanel;
 	private JScrollPane scrollPane;
 
 	/**
@@ -61,34 +61,33 @@ public class WorkTimePage {
 		JTextPane empNameTxt = new JTextPane();
 		empNameTxt.setEditable(false);
 		empNameTxt.setBackground(UIManager.getColor("CheckBox.background"));
-		empNameTxt.setText("\uC9C1\uC6D0\uC774\uB984");
+		empNameTxt.setText("직원이름");
 		empNameTxt.setBounds(12, 10, 55, 21);
 		frame.getContentPane().add(empNameTxt);
 		
 		JTextPane dateTxt = new JTextPane();
 		dateTxt.setEditable(false);
 		dateTxt.setBackground(UIManager.getColor("CheckBox.background"));
-		dateTxt.setText("\uC77C\uC790");
+		dateTxt.setText("일자");
 		dateTxt.setBounds(36, 41, 31, 21);
 		frame.getContentPane().add(dateTxt);
 		
-		empName = new JTextField();
-		empName.setBounds(79, 10, 161, 21);
-		frame.getContentPane().add(empName);
-		empName.setColumns(10);
+		nameTextField = new JTextField();
+		nameTextField.setBounds(79, 10, 161, 21);
+		frame.getContentPane().add(nameTextField);
+		nameTextField.setColumns(10);
 		
-		JButton checkbtn = new JButton("\uC870\uD68C");
-		checkbtn.setBounds(252, 10, 77, 52);
-		frame.getContentPane().add(checkbtn);
+		JButton SearchButton = new JButton("조회");
+		SearchButton.setBounds(252, 10, 77, 52);
+		frame.getContentPane().add(SearchButton);
 		
-		date = new JTextField();
-		date.setForeground(Color.LIGHT_GRAY);
-		date.setText("ex)2022.05.06");
-		date.setColumns(10);
-		date.setBounds(79, 41, 161, 21);
-		frame.getContentPane().add(date);
+		DateTextField = new JTextField();
+		DateTextField.setForeground(Color.LIGHT_GRAY);
+		DateTextField.setColumns(10);
+		DateTextField.setBounds(79, 41, 161, 21);
+		frame.getContentPane().add(DateTextField);
 		
-		backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
+		backbtn = new JButton("뒤로가기");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_UI mmframe = new Manager_UI();
@@ -99,17 +98,17 @@ public class WorkTimePage {
 		backbtn.setBounds(341, 10, 101, 52);
 		frame.getContentPane().add(backbtn);
 		
-		panel = new JPanel();
-		panel.setBounds(12, 72, 430, 179);
-		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		infoPanel = new JPanel();
+		infoPanel.setBounds(12, 72, 430, 179);
+		frame.getContentPane().add(infoPanel);
+		infoPanel.setLayout(new BorderLayout(0, 0));
 		
 		scrollPane = new JScrollPane();
-		panel.add(scrollPane, BorderLayout.CENTER);
+		infoPanel.add(scrollPane, BorderLayout.CENTER);
 		
-		empTable = new JTable();
-		scrollPane.setViewportView(empTable);
-		empTable.setModel(new DefaultTableModel(
+		workTable = new JTable();
+		scrollPane.setViewportView(workTable);
+		workTable.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"", "", ""},
 				{null, null, null},
@@ -125,7 +124,7 @@ public class WorkTimePage {
 				{null, null, null},
 			},
 			new String[] {
-				"\uC9C1\uC6D0\uC774\uB984", "\uCD9C\uADFC\uC77C\uC2DC", "\uD1F4\uADFC\uC77C\uC2DC"
+				"직원이름", "출근일시", "퇴근일시"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -135,8 +134,8 @@ public class WorkTimePage {
 				return columnEditables[column];
 			}
 		});
-		empTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		empTable.getColumnModel().getColumn(0).setMaxWidth(60);
+		workTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+		workTable.getColumnModel().getColumn(0).setMaxWidth(60);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

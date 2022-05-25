@@ -43,6 +43,7 @@ public class PasswordCheck {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("로그인");
 		frame.setBounds(100, 100, 350, 81);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -50,7 +51,7 @@ public class PasswordCheck {
 		JTextPane passwordTxt = new JTextPane();
 		passwordTxt.setEditable(false);
 		passwordTxt.setBackground(UIManager.getColor("CheckBox.background"));
-		passwordTxt.setText("\uBE44\uBC00\uBC88\uD638 \uC785\uB825");
+		passwordTxt.setText("비밀번호 입력");
 		passwordTxt.setBounds(12, 10, 83, 21);
 		frame.getContentPane().add(passwordTxt);
 		
@@ -59,7 +60,7 @@ public class PasswordCheck {
 		frame.getContentPane().add(password);
 		password.setColumns(10);
 		
-		JButton loginbtn = new JButton("\uB85C\uADF8\uC778");
+		JButton loginbtn = new JButton("로그인");
 		loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_UI mmframe = new Manager_UI();

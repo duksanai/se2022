@@ -13,14 +13,15 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class Product_Sell_UI {
 
 	private JFrame frame;
-	private JTable table;
-	private JTextField totalprice;
-	private JTextField goodsNumTxt;
-	private JTextField receiptNumtxt;
+	private JTable product_list;
+	private JTextField all_money;
+	private JTextField product_text;
+	private JTextField receipt_text;
 
 	/**
 	 * Launch the application.
@@ -50,25 +51,29 @@ public class Product_Sell_UI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("상품 판매");
 		frame.setBounds(100, 100, 700, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(12, 43, 463, 508);
-		frame.getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		JPanel product_list_pane = new JPanel();
+		product_list_pane.setBackground(Color.WHITE);
+		product_list_pane.setBounds(12, 43, 463, 508);
+		frame.getContentPane().add(product_list_pane);
+		product_list_pane.setLayout(new BorderLayout(0, 0));
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		JScrollPane product_list_scroll = new JScrollPane();
+		product_list_pane.add(product_list_scroll, BorderLayout.CENTER);
+		
+		product_list = new JTable();
+		product_list_scroll.setViewportView(product_list);
+		product_list.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"\uC0C1\uD488\uBA85", "\uC218\uB7C9", "\uAE08\uC561"},
 				{null, null, null},
 				{null, null, null},
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"상품명", "수량", "금액"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
@@ -78,79 +83,79 @@ public class Product_Sell_UI {
 				return columnEditables[column];
 			}
 		});
-		panel.add(table);
 		
-		JButton backbt = new JButton("\uB4A4\uB85C\uAC00\uAE30");
-		backbt.addActionListener(new ActionListener() {
+		JButton back_main = new JButton("뒤로가기");
+		back_main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}
 		});
-		backbt.setBounds(12, 10, 97, 23);
-		frame.getContentPane().add(backbt);
+		back_main.setBounds(12, 10, 97, 23);
+		frame.getContentPane().add(back_main);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(487, 43, 185, 508);
-		frame.getContentPane().add(panel_1);
-		panel_1.setLayout(null);
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(487, 43, 185, 508);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		totalprice = new JTextField();
-		totalprice.setBounds(67, 10, 106, 21);
-		panel_1.add(totalprice);
-		totalprice.setColumns(10);
+		all_money = new JTextField();
+		all_money.setEditable(false);
+		all_money.setBounds(67, 10, 106, 21);
+		panel.add(all_money);
+		all_money.setColumns(10);
 		
-		JTextPane pricetext = new JTextPane();
-		pricetext.setText("\uCD1D\uAE08\uC561");
-		pricetext.setBounds(12, 10, 43, 21);
-		panel_1.add(pricetext);
+		JTextPane all_money_txt = new JTextPane();
+		all_money_txt.setText("총금액");
+		all_money_txt.setBounds(12, 10, 43, 21);
+		panel.add(all_money_txt);
 		
-		JButton delbtn = new JButton("\uC120\uD0DD \uC81C\uAC70");
-		delbtn.setBounds(12, 52, 161, 32);
-		panel_1.add(delbtn);
+		JButton select_delete = new JButton("선택 제거");
+		select_delete.setBounds(12, 52, 161, 32);
+		panel.add(select_delete);
 		
-		JButton delAllbtn = new JButton("\uC804\uCCB4 \uC81C\uAC70");
-		delAllbtn.setBounds(12, 94, 161, 32);
-		panel_1.add(delAllbtn);
+		JButton select_all_clear = new JButton("전체 제거");
+		select_all_clear.setBounds(12, 94, 161, 32);
+		panel.add(select_all_clear);
 		
-		JButton goodsNumScan = new JButton("\uC0C1\uD488\uC815\uBCF4 \uC2A4\uCE94");
-		goodsNumScan.setBounds(12, 197, 161, 37);
-		panel_1.add(goodsNumScan);
+		JButton scan_product = new JButton("상품정보 스캔");
+		scan_product.setBounds(12, 197, 161, 37);
+		panel.add(scan_product);
 		
-		JButton receiptNumScan = new JButton("\uC601\uC218\uC99D \uBC88\uD638 \uC2A4\uCE94");
-		receiptNumScan.setBounds(12, 275, 161, 37);
-		panel_1.add(receiptNumScan);
+		JButton scan_receipt = new JButton("영수증 번호 스캔");
+		scan_receipt.setBounds(12, 275, 161, 37);
+		panel.add(scan_receipt);
 		
-		JButton cashbtn = new JButton("\uD604\uAE08\uACB0\uC81C\uD558\uAE30");
-		cashbtn.addActionListener(new ActionListener() {
+		JButton pay_cash = new JButton("현금결제하기");
+		pay_cash.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cash cframe = new Cash();
 				cframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		cashbtn.setBounds(12, 338, 161, 46);
-		panel_1.add(cashbtn);
+		pay_cash.setBounds(12, 338, 161, 46);
+		panel.add(pay_cash);
 		
-		JButton cardbtn = new JButton("\uCE74\uB4DC\uACB0\uC81C\uD558\uAE30");
-		cardbtn.setBounds(12, 394, 161, 46);
-		panel_1.add(cardbtn);
+		JButton pay_card = new JButton("카드결제하기");
+		pay_card.setBounds(12, 394, 161, 46);
+		panel.add(pay_card);
 		
-		JButton returnbtn = new JButton("\uBC18\uD488\uC694\uCCAD");
-		returnbtn.setBounds(12, 450, 161, 48);
-		panel_1.add(returnbtn);
+		JButton return_list = new JButton("반품요청");
+		return_list.setBounds(12, 450, 161, 48);
+		panel.add(return_list);
 		
-		goodsNumTxt = new JTextField();
-		goodsNumTxt.setBounds(12, 166, 161, 21);
-		panel_1.add(goodsNumTxt);
-		goodsNumTxt.setColumns(10);
+		product_text = new JTextField();
+		product_text.setBounds(12, 166, 161, 21);
+		panel.add(product_text);
+		product_text.setColumns(10);
 		
-		receiptNumtxt = new JTextField();
-		receiptNumtxt.setColumns(10);
-		receiptNumtxt.setBounds(12, 244, 161, 21);
-		panel_1.add(receiptNumtxt);
+		receipt_text = new JTextField();
+		receipt_text.setColumns(10);
+		receipt_text.setBounds(12, 244, 161, 21);
+		panel.add(receipt_text);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

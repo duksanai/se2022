@@ -21,6 +21,7 @@ public class PasswordChange {
 	/**
 	 * Launch the application.
 	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,6 +47,7 @@ public class PasswordChange {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("비밀번호 변경");
 		frame.setBounds(100, 100, 380, 141);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -53,20 +55,20 @@ public class PasswordChange {
 		JTextPane nowPwTxt = new JTextPane();
 		nowPwTxt.setEditable(false);
 		nowPwTxt.setBackground(UIManager.getColor("CheckBox.background"));
-		nowPwTxt.setText("\uD604\uC7AC \uBE44\uBC00\uBC88\uD638");
+		nowPwTxt.setText("현재 비밀번호");
 		nowPwTxt.setBounds(28, 10, 83, 21);
 		frame.getContentPane().add(nowPwTxt);
 		
 		JTextPane newPwTxt = new JTextPane();
 		newPwTxt.setEditable(false);
-		newPwTxt.setText("\uC0C8 \uBE44\uBC00\uBC88\uD638");
+		newPwTxt.setText("새 비밀번호");
 		newPwTxt.setBackground(SystemColor.menu);
 		newPwTxt.setBounds(40, 41, 71, 21);
 		frame.getContentPane().add(newPwTxt);
 		
 		JTextPane newPwCheckTxt = new JTextPane();
 		newPwCheckTxt.setEditable(false);
-		newPwCheckTxt.setText("\uC0C8 \uBE44\uBC00\uBC88\uD638 \uD655\uC778");
+		newPwCheckTxt.setText("새 비밀번호 확인");
 		newPwCheckTxt.setBackground(SystemColor.menu);
 		newPwCheckTxt.setBounds(12, 72, 99, 21);
 		frame.getContentPane().add(newPwCheckTxt);
@@ -86,16 +88,16 @@ public class PasswordChange {
 		newPwCheck.setBounds(123, 72, 116, 21);
 		frame.getContentPane().add(newPwCheck);
 		
-		JButton btnNewButton = new JButton("\uC218\uC815");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton modifybtn = new JButton("수정");
+		modifybtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Manager_UI mmframe = new Manager_UI();
 				mmframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		btnNewButton.setBounds(251, 8, 99, 85);
-		frame.getContentPane().add(btnNewButton);
+		modifybtn.setBounds(251, 8, 99, 85);
+		frame.getContentPane().add(modifybtn);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

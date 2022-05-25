@@ -19,12 +19,16 @@ import javax.swing.JList;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
 
 public class ReceiptCheckPage {
 
 	private JFrame frame;
-	private JTable receiptTable;
 	private JTextField receiptNum;
+	private JPanel panel;
+	private JTextPane receipt;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -54,49 +58,50 @@ public class ReceiptCheckPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 540, 380);
+		frame.setTitle("영수증 조회");
+		frame.setBounds(100, 100, 392, 380);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		panel = new JPanel();
+		panel.setBounds(12, 10, 351, 41);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
 		receiptNum = new JTextField();
+		receiptNum.setBounds(12, 10, 165, 23);
+		panel.add(receiptNum);
 		receiptNum.setForeground(Color.LIGHT_GRAY);
-		receiptNum.setBounds(12, 11, 306, 36);
-		frame.getContentPane().add(receiptNum);
 		receiptNum.setColumns(10);
 		
-		receiptTable = new JTable();
-		receiptTable.setShowVerticalLines(false);
-		receiptTable.setFont(new Font("����", Font.PLAIN, 13));
-		receiptTable.setBorder(new LineBorder(new Color(0, 0, 0), 0));
-		receiptTable.setBounds(12, 56, 500, 160);
-		receiptTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"\uC601\uC218\uC99D \uBC88\uD638", null, ""},
-				{"\uAD6C\uB9E4\uC0C1\uD488\uBAA9\uB85D", null, null},
-				{"", "", ""},
-				{"", "", ""},
-				{"", "", ""},
-				{"", "", ""},
-				{"", "", ""},
-				{"", "", ""},
-				{"\uAD6C\uB9E4\uC77C\uC2DC", null, ""},
-				{"\uACB0\uC81C\uC218\uB2E8", null, ""},
-			},
-			new String[] {
-				"New column", "New column", "New column"
-			}
-		));
-		frame.getContentPane().add(receiptTable);
+		JButton Checkbtn = new JButton("조회");
+		Checkbtn.setBounds(189, 10, 57, 23);
+		panel.add(Checkbtn);
 		
-		JButton Checkbtn = new JButton("\uC870\uD68C");
-		Checkbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		Checkbtn.setBounds(330, 10, 70, 36);
-		frame.getContentPane().add(Checkbtn);
+		JButton backbtn = new JButton("돌아가기");
+		backbtn.setBounds(258, 10, 81, 23);
+		panel.add(backbtn);
 		
-		JButton backbtn = new JButton("\uB3CC\uC544\uAC00\uAE30");
+		scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(12, 61, 351, 270);
+		frame.getContentPane().add(scrollPane);
+		
+		receipt = new JTextPane();
+		scrollPane.setRowHeaderView(receipt);
+		receipt.setText("품명\t\t단가\t수량\t금액\r\n"//영수증 출력
+				+ "---------------------------------------------------------"
+				+ "\r\n과자\t\t1,450\t1\t2,900"
+				+ "\r\n\r\n\r\n\r\n\r\n\r\n\r\n"
+				+ "---------------------------------------------------------"
+				+ "\r\n합      계:\t\t\t\t2,900"
+				+ "\r\n받을금액:\t\t\t\t2,900"
+				+ "\r\n받은금액:\t\t\t\t2,900"
+				+ "\r\n"
+				+ "---------------------------------------------------------"
+				+ "\r\n결제수단\t\t\t\t현금결제");
+		receipt.setFont(new Font("굴림", Font.PLAIN, 12));
+		receipt.setEditable(false);
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Main_UI mp = new Main_UI();
@@ -104,8 +109,10 @@ public class ReceiptCheckPage {
 				frame.dispose();
 			}
 		});
-		backbtn.setBounds(412, 10, 100, 36);
-		frame.getContentPane().add(backbtn);
+		Checkbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);
