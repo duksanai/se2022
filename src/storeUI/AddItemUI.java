@@ -11,11 +11,11 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GoodsRegistration {
+public class AddItemUI {
 
 	private JFrame frame;
 	private JTextField barcode;
-	private JTextField goodsName;
+	private JTextField itemName;
 	private JTextField price;
 	private JTextField stock;
 
@@ -26,7 +26,7 @@ public class GoodsRegistration {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GoodsRegistration window = new GoodsRegistration();
+					AddItemUI window = new AddItemUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +38,7 @@ public class GoodsRegistration {
 	/**
 	 * Create the application.
 	 */
-	public GoodsRegistration() {
+	public AddItemUI() {
 		initialize();
 	}
 
@@ -47,20 +47,22 @@ public class GoodsRegistration {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setTitle("상품등록");
 		frame.setBounds(100, 100, 340, 230);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
-		backbtn.addActionListener(new ActionListener() {
+		JButton backButton = new JButton("뒤로가기");
+		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mp = new MainFrame();
+				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}
 		});
-		backbtn.setBounds(207, 10, 97, 23);
-		frame.getContentPane().add(backbtn);
+		backButton.setBounds(207, 10, 97, 23);
+		frame.getContentPane().add(backButton);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
@@ -70,25 +72,25 @@ public class GoodsRegistration {
 
 		JTextPane barcodeTxt = new JTextPane();
 		barcodeTxt.setEditable(false);
-		barcodeTxt.setText("\uBC14\uCF54\uB4DC");
+		barcodeTxt.setText("바코드");
 		barcodeTxt.setBounds(12, 10, 43, 21);
 		panel.add(barcodeTxt);
 
-		JTextPane goodsNameTxt = new JTextPane();
-		goodsNameTxt.setEditable(false);
-		goodsNameTxt.setText("\uC0C1\uD488\uBA85");
-		goodsNameTxt.setBounds(12, 41, 43, 21);
-		panel.add(goodsNameTxt);
+		JTextPane itemNameTxt = new JTextPane();
+		itemNameTxt.setEditable(false);
+		itemNameTxt.setText("상품명");
+		itemNameTxt.setBounds(12, 41, 43, 21);
+		panel.add(itemNameTxt);
 
 		JTextPane priceTxt = new JTextPane();
 		priceTxt.setEditable(false);
-		priceTxt.setText("\uAC00\uACA9");
+		priceTxt.setText("가격");
 		priceTxt.setBounds(24, 72, 31, 21);
 		panel.add(priceTxt);
 
 		JTextPane stockTxt = new JTextPane();
 		stockTxt.setEditable(false);
-		stockTxt.setText("\uC7AC\uACE0\uC218");
+		stockTxt.setText("재고수");
 		stockTxt.setBounds(12, 103, 43, 21);
 		panel.add(stockTxt);
 
@@ -97,10 +99,10 @@ public class GoodsRegistration {
 		panel.add(barcode);
 		barcode.setColumns(10);
 
-		goodsName = new JTextField();
-		goodsName.setColumns(10);
-		goodsName.setBounds(67, 41, 116, 21);
-		panel.add(goodsName);
+		itemName = new JTextField();
+		itemName.setColumns(10);
+		itemName.setBounds(67, 41, 116, 21);
+		panel.add(itemName);
 
 		price = new JTextField();
 		price.setColumns(10);
@@ -112,13 +114,13 @@ public class GoodsRegistration {
 		stock.setBounds(67, 103, 116, 21);
 		panel.add(stock);
 
-		JButton regbtn = new JButton("\uB4F1\uB85D");
-		regbtn.setBounds(195, 10, 97, 23);
-		panel.add(regbtn);
+		JButton submitButton = new JButton("등록");
+		submitButton.setBounds(195, 10, 97, 23);
+		panel.add(submitButton);
 
-		JButton exelupbtn = new JButton("\uC5D1\uC140 \uC5C5\uB85C\uB4DC");
-		exelupbtn.setBounds(195, 41, 97, 23);
-		panel.add(exelupbtn);
+		JButton uploadExcelButton = new JButton("엑셀 업로드");
+		uploadExcelButton.setBounds(195, 41, 97, 23);
+		panel.add(uploadExcelButton);
 	}
 
 	public void setVisible(boolean b) {

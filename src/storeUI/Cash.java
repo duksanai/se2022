@@ -15,9 +15,9 @@ import java.awt.event.ActionEvent;
 public class Cash {
 
 	private JFrame frame;
-	private JTextField price;
-	private JTextField getCash;
-	private JTextField charge;
+	private JTextField receive_money;
+	private JTextField received_money;
+	private JTextField div_money;
 
 	/**
 	 * Launch the application.
@@ -47,6 +47,8 @@ public class Cash {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setEnabled(false);
+		frame.setTitle("현금결제");
 		frame.setBounds(100, 100, 337, 140);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -56,49 +58,49 @@ public class Cash {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JTextPane priceTxt = new JTextPane();
-		priceTxt.setEditable(false);
-		priceTxt.setText("\uBC1B\uC744 \uAE08\uC561");
-		priceTxt.setBounds(12, 10, 59, 20);
-		panel.add(priceTxt);
+		JTextPane receive_money_txt = new JTextPane();
+		receive_money_txt.setEditable(false);
+		receive_money_txt.setText("받을 금액");
+		receive_money_txt.setBounds(12, 10, 59, 20);
+		panel.add(receive_money_txt);
 		
-		JTextPane getCashTxt = new JTextPane();
-		getCashTxt.setEditable(false);
-		getCashTxt.setText("\uBC1B\uC740 \uAE08\uC561");
-		getCashTxt.setBounds(12, 40, 59, 20);
-		panel.add(getCashTxt);
+		JTextPane received_money_txt = new JTextPane();
+		received_money_txt.setEditable(false);
+		received_money_txt.setText("받은 금액");
+		received_money_txt.setBounds(12, 40, 59, 20);
+		panel.add(received_money_txt);
 		
-		JTextPane chargeTxt = new JTextPane();
-		chargeTxt.setEditable(false);
-		chargeTxt.setText("\uAC70\uC2A4\uB984\uB3C8");
-		chargeTxt.setBounds(16, 70, 55, 20);
-		panel.add(chargeTxt);
+		JTextPane div_money_txt = new JTextPane();
+		div_money_txt.setEditable(false);
+		div_money_txt.setText("거스름돈");
+		div_money_txt.setBounds(16, 70, 55, 20);
+		panel.add(div_money_txt);
 		
-		price = new JTextField();
-		price.setBounds(83, 10, 116, 21);
-		panel.add(price);
-		price.setColumns(10);
+		receive_money = new JTextField();
+		receive_money.setBounds(83, 10, 116, 21);
+		panel.add(receive_money);
+		receive_money.setColumns(10);
 		
-		getCash = new JTextField();
-		getCash.setColumns(10);
-		getCash.setBounds(83, 40, 116, 21);
-		panel.add(getCash);
+		received_money = new JTextField();
+		received_money.setColumns(10);
+		received_money.setBounds(83, 40, 116, 21);
+		panel.add(received_money);
 		
-		charge = new JTextField();
-		charge.setColumns(10);
-		charge.setBounds(83, 70, 116, 21);
-		panel.add(charge);
+		div_money = new JTextField();
+		div_money.setColumns(10);
+		div_money.setBounds(83, 70, 116, 21);
+		panel.add(div_money);
 		
-		JButton paymentbtn = new JButton("\uD604\uAE08\uACB0\uC81C");
-		paymentbtn.addActionListener(new ActionListener() {
+		JButton calculator_button = new JButton("금액계산");
+		calculator_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GoodsSell gsframe = new GoodsSell();
+				Product_Sell_UI gsframe = new Product_Sell_UI();
 				gsframe.setVisible(true);
 				frame.dispose();
 			}
 		});
-		paymentbtn.setBounds(211, 10, 97, 80);
-		panel.add(paymentbtn);
+		calculator_button.setBounds(211, 10, 97, 80);
+		panel.add(calculator_button);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

@@ -157,7 +157,7 @@ public class SalesCheck {
 		panel_1.add(textPane_8);
 		
 		JTextPane textPane_9 = new JTextPane();
-		textPane_9.setFont(new Font("±¼¸²", Font.PLAIN, 18));
+		textPane_9.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 18));
 		textPane_9.setText("____\uB144\uB3C4 \uB9E4\uC7A5 \uB9E4\uCD9C");
 		textPane_9.setBounds(183, 10, 163, 28);
 		panel_1.add(textPane_9);
@@ -243,7 +243,7 @@ public class SalesCheck {
 		JButton backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagementMode mmframe = new ManagementMode();
+				Manager_UI mmframe = new Manager_UI();
 				mmframe.setVisible(true);
 				frame.dispose();
 			}

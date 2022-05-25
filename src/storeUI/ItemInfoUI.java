@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GoodsInfo {
+public class ItemInfoUI {
 
 	private JFrame frame;
 	private JTextField goodsCode;
@@ -27,7 +27,7 @@ public class GoodsInfo {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GoodsInfo window = new GoodsInfo();
+					ItemInfoUI window = new ItemInfoUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class GoodsInfo {
 	/**
 	 * Create the application.
 	 */
-	public GoodsInfo() {
+	public ItemInfoUI() {
 		initialize();
 	}
 
@@ -48,6 +48,8 @@ public class GoodsInfo {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setTitle("상품정보");
 		frame.setBounds(100, 100, 450, 249);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -55,13 +57,13 @@ public class GoodsInfo {
 		JTextPane goodsCodeTxt = new JTextPane();
 		goodsCodeTxt.setEditable(false);
 		goodsCodeTxt.setBackground(UIManager.getColor("CheckBox.background"));
-		goodsCodeTxt.setText("\uC0C1\uD488 \uCF54\uB4DC : ");
+		goodsCodeTxt.setText("상품 코드 : ");
 		goodsCodeTxt.setBounds(40, 25, 71, 21);
 		frame.getContentPane().add(goodsCodeTxt);
 		
 		JTextPane goodsNameTxt = new JTextPane();
 		goodsNameTxt.setEditable(false);
-		goodsNameTxt.setText("\uC0C1\uD488\uBA85 : ");
+		goodsNameTxt.setText("상품명 : ");
 		goodsNameTxt.setBackground(SystemColor.menu);
 		goodsNameTxt.setBounds(56, 56, 55, 21);
 		frame.getContentPane().add(goodsNameTxt);
@@ -76,14 +78,14 @@ public class GoodsInfo {
 		goodsName.setBounds(110, 56, 219, 21);
 		frame.getContentPane().add(goodsName);
 		
-		JButton searchbtn = new JButton("\uAC80\uC0C9");
+		JButton searchbtn = new JButton("검색");
 		searchbtn.setBounds(341, 25, 81, 52);
 		frame.getContentPane().add(searchbtn);
 		
 		goodsTable = new JTable();
 		goodsTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"\uC0C1\uD488\uCF54\uB4DC", "\uC0C1\uD488\uBA85", "\uAC00\uACA9(\uC6D0)", "\uC7AC\uACE0\uC218\uB7C9"},
+				{"상품코드", "상품명", "가격(원)", "재고수량"},
 				{null, null, null, null},
 			},
 			new String[] {
@@ -108,7 +110,7 @@ public class GoodsInfo {
 		goodsTable.setBounds(12, 101, 410, 32);
 		frame.getContentPane().add(goodsTable);
 		
-		JButton modifybtn = new JButton("\uC218\uC815");
+		JButton modifybtn = new JButton("수정");
 		modifybtn.setBounds(12, 143, 130, 52);
 		frame.getContentPane().add(modifybtn);
 		
@@ -119,7 +121,7 @@ public class GoodsInfo {
 		JButton backbtn = new JButton("\uD655\uC778");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mp = new MainFrame();
+				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}

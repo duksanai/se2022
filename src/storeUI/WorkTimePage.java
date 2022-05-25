@@ -12,14 +12,19 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
 
-public class EmployeeWorking {
+public class WorkTimePage {
 
 	private JFrame frame;
 	private JTable empTable;
 	private JTextField empName;
 	private JTextField date;
 	private JButton backbtn;
+	private JPanel panel;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -28,7 +33,7 @@ public class EmployeeWorking {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EmployeeWorking window = new EmployeeWorking();
+					WorkTimePage window = new WorkTimePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +45,7 @@ public class EmployeeWorking {
 	/**
 	 * Create the application.
 	 */
-	public EmployeeWorking() {
+	public WorkTimePage() {
 		initialize();
 	}
 
@@ -52,31 +57,6 @@ public class EmployeeWorking {
 		frame.setBounds(100, 100, 470, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		empTable = new JTable();
-		empTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"\uC9C1\uC6D0\uC774\uB984", "\uCD9C\uADFC\uC77C\uC2DC", "\uD1F4\uADFC\uC77C\uC2DC"},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-				{null, null, null},
-			},
-			new String[] {
-				"New column", "New column", "New column"
-			}
-		));
-		empTable.getColumnModel().getColumn(0).setPreferredWidth(60);
-		empTable.getColumnModel().getColumn(0).setMaxWidth(60);
-		empTable.setBounds(12, 72, 430, 179);
-		frame.getContentPane().add(empTable);
 		
 		JTextPane empNameTxt = new JTextPane();
 		empNameTxt.setEditable(false);
@@ -111,13 +91,52 @@ public class EmployeeWorking {
 		backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagementMode mmframe = new ManagementMode();
+				Manager_UI mmframe = new Manager_UI();
 				mmframe.setVisible(true);
 				frame.dispose();
 			}
 		});
 		backbtn.setBounds(341, 10, 101, 52);
 		frame.getContentPane().add(backbtn);
+		
+		panel = new JPanel();
+		panel.setBounds(12, 72, 430, 179);
+		frame.getContentPane().add(panel);
+		panel.setLayout(new BorderLayout(0, 0));
+		
+		scrollPane = new JScrollPane();
+		panel.add(scrollPane, BorderLayout.CENTER);
+		
+		empTable = new JTable();
+		scrollPane.setViewportView(empTable);
+		empTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"", "", ""},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+				{null, null, null},
+			},
+			new String[] {
+				"\uC9C1\uC6D0\uC774\uB984", "\uCD9C\uADFC\uC77C\uC2DC", "\uD1F4\uADFC\uC77C\uC2DC"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		empTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+		empTable.getColumnModel().getColumn(0).setMaxWidth(60);
 	}
 	public void setVisible(boolean b) {
 		frame.setVisible(b);

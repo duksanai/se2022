@@ -62,7 +62,7 @@ public class PasswordCheck {
 		JButton loginbtn = new JButton("\uB85C\uADF8\uC778");
 		loginbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagementMode mmframe = new ManagementMode();
+				Manager_UI mmframe = new Manager_UI();
 				mmframe.setVisible(true);
 				frame.dispose();
 			}

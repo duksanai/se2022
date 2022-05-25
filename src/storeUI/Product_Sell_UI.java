@@ -14,7 +14,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class GoodsSell {
+public class Product_Sell_UI {
 
 	private JFrame frame;
 	private JTable table;
@@ -29,7 +29,7 @@ public class GoodsSell {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GoodsSell window = new GoodsSell();
+					Product_Sell_UI window = new Product_Sell_UI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class GoodsSell {
 	/**
 	 * Create the application.
 	 */
-	public GoodsSell() {
+	public Product_Sell_UI() {
 		initialize();
 	}
 
@@ -83,7 +83,7 @@ public class GoodsSell {
 		JButton backbt = new JButton("\uB4A4\uB85C\uAC00\uAE30");
 		backbt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mp = new MainFrame();
+				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}

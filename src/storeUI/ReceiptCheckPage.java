@@ -20,7 +20,7 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 
-public class Receipt {
+public class ReceiptCheckPage {
 
 	private JFrame frame;
 	private JTable receiptTable;
@@ -33,7 +33,7 @@ public class Receipt {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Receipt window = new Receipt();
+					ReceiptCheckPage window = new ReceiptCheckPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class Receipt {
 	/**
 	 * Create the application.
 	 */
-	public Receipt() {
+	public ReceiptCheckPage() {
 		initialize();
 	}
 
@@ -99,7 +99,7 @@ public class Receipt {
 		JButton backbtn = new JButton("\uB3CC\uC544\uAC00\uAE30");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mp = new MainFrame();
+				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}

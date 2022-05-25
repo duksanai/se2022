@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Receiving {
+public class ImportItemUI {
 
 	private JFrame frame;
 	private JTextField recNum;
@@ -27,7 +27,7 @@ public class Receiving {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Receiving window = new Receiving();
+					ImportItemUI window = new ImportItemUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class Receiving {
 	/**
 	 * Create the application.
 	 */
-	public Receiving() {
+	public ImportItemUI() {
 		initialize();
 	}
 
@@ -56,7 +56,7 @@ public class Receiving {
 		JButton backbtn = new JButton("\uB4A4\uB85C\uAC00\uAE30");
 		backbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MainFrame mp = new MainFrame();
+				Main_UI mp = new Main_UI();
 				mp.setVisible(true);
 				frame.dispose();
 			}

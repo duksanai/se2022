@@ -27,7 +27,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 import javax.swing.JTextField;
 
-public class MainFrame {
+public class Main_UI {
 
 	private JFrame frame;
 
@@ -38,7 +38,7 @@ public class MainFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame window = new MainFrame();
+					Main_UI window = new Main_UI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class MainFrame {
 	/**
 	 * Create the application.
 	 */
-	public MainFrame() {
+	public Main_UI() {
 		initialize();
 	}
 
@@ -59,15 +59,16 @@ public class MainFrame {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("메인화면");
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 600, 448);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		JButton GoodsRegister = new JButton("\uC0C1\uD488 \uB4F1\uB85D");
+		JButton GoodsRegister = new JButton("상품 등록");
 		GoodsRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GoodsRegistration grframe = new GoodsRegistration();
+				AddItemUI grframe = new AddItemUI();
 				grframe.setVisible(true);
 				frame.dispose();
 			}
@@ -75,10 +76,10 @@ public class MainFrame {
 		GoodsRegister.setBounds(146, 265, 122, 130);
 		frame.getContentPane().add(GoodsRegister);
 
-		JButton GoodsManagement = new JButton("\uC0C1\uD488 \uAD00\uB9AC");
+		JButton GoodsManagement = new JButton("상품 관리");
 		GoodsManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GoodsInfo giframe = new GoodsInfo();
+				ItemInfoUI giframe = new ItemInfoUI();
 				giframe.setVisible(true);
 				frame.dispose();
 			}
@@ -86,21 +87,21 @@ public class MainFrame {
 		GoodsManagement.setBounds(280, 265, 122, 130);
 		frame.getContentPane().add(GoodsManagement);
 
-		JButton SellButton = new JButton("\uC0C1\uD488 \uD310\uB9E4");
+		JButton SellButton = new JButton("상품 판매");
 		SellButton.setBounds(14, 75, 388, 180);
 		SellButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GoodsSell gsframe = new GoodsSell();
+				Product_Sell_UI gsframe = new Product_Sell_UI();
 				gsframe.setVisible(true);
 				frame.dispose();
 			}
 		});
 		frame.getContentPane().add(SellButton);
 
-		JButton Receiving = new JButton("\uC785\uACE0 \uCC98\uB9AC");
+		JButton Receiving = new JButton("입고 처리");
 		Receiving.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Receiving recframe = new Receiving();
+				ImportItemUI recframe = new ImportItemUI();
 				recframe.setVisible(true);
 				frame.dispose();
 			}
@@ -108,11 +109,11 @@ public class MainFrame {
 		Receiving.setBounds(12, 265, 122, 130);
 		frame.getContentPane().add(Receiving);
 
-		JButton Receipt = new JButton("\uC601\uC218\uC99D \uC870\uD68C");
+		JButton Receipt = new JButton("영수증 조회");
 		Receipt.setBounds(414, 188, 160, 67);
 		Receipt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Receipt receiptframe = new Receipt();
+				ReceiptCheckPage receiptframe = new ReceiptCheckPage();
 				receiptframe.setVisible(true);
 				frame.dispose();
 			}
@@ -128,24 +129,24 @@ public class MainFrame {
 		JTextPane nowEmp = new JTextPane();
 		nowEmp.setBounds(466, 34, 94, 21);
 		nowEmp.setEditable(false);
-		nowEmp.setFont(new Font("����", Font.PLAIN, 12));
-		nowEmp.setText("\uADFC\uBB34 \uC9C1\uC6D0: OOO");
+		nowEmp.setFont(new Font("굴림", Font.PLAIN, 12));
+		nowEmp.setText("근무 직원: OOO");
 		Info.add(nowEmp);
 
 		JTextPane date = new JTextPane();
 		date.setBounds(413, 0, 147, 24);
 		date.setEditable(false);
-		date.setText("2022-05-04 13:04:23 (\uC218)");
+		date.setText("2022-05-04 13:04:23 (수)");
 		Info.add(date);
 		
 		JTextPane storeName = new JTextPane();
-		storeName.setText("OO\uB9C8\uD2B8");
+		storeName.setText("OO마트");
 		storeName.setEditable(false);
-		storeName.setFont(new Font("����", Font.BOLD, 40));
+		storeName.setFont(new Font("굴림", Font.BOLD, 40));
 		storeName.setBounds(0, 0, 247, 55);
 		Info.add(storeName);
 
-		JButton Manager = new JButton("\uAD00\uB9AC\uC790 \uBAA8\uB4DC \uC9C4\uC785");
+		JButton Manager = new JButton("관리자 모드 진입");
 		Manager.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PasswordCheck pcframe = new PasswordCheck();
@@ -156,7 +157,7 @@ public class MainFrame {
 		Manager.setBounds(414, 265, 160, 130);
 		frame.getContentPane().add(Manager);
 		
-		JButton empChangebtn = new JButton("\uC9C1\uC6D0 \uAD50\uB300");
+		JButton empChangebtn = new JButton("직원 교대");
 		empChangebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EmployeeChange ecframe = new EmployeeChange();
@@ -166,10 +167,10 @@ public class MainFrame {
 		empChangebtn.setBounds(414, 75, 158, 28);
 		frame.getContentPane().add(empChangebtn);
 		
-		JButton customerbtn = new JButton("\uACE0\uAC1D \uAD00\uB9AC");
+		JButton customerbtn = new JButton("고객 관리");
 		customerbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CustomerManagement cmframe = new CustomerManagement();
+				CustomerSearchPage cmframe = new CustomerSearchPage();
 				cmframe.setVisible(true);
 				frame.dispose();
 			}

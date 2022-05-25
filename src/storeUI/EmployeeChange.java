@@ -46,6 +46,8 @@ public class EmployeeChange {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
+		frame.setTitle("직원교대");
 		frame.setBounds(100, 100, 366, 116);
 		
 		JPanel panel = new JPanel();
@@ -55,13 +57,13 @@ public class EmployeeChange {
 		
 		JTextPane empNowTxt = new JTextPane();
 		empNowTxt.setEditable(false);
-		empNowTxt.setText("\uD604\uC7AC \uADFC\uBB34 \uC9C1\uC6D0 : ");
+		empNowTxt.setText("현재 근무 직원 : ");
 		empNowTxt.setBounds(12, 10, 99, 21);
 		panel.add(empNowTxt);
 		
 		JTextPane changedEmpTxt = new JTextPane();
 		changedEmpTxt.setEditable(false);
-		changedEmpTxt.setText("\uAD50\uB300 \uC9C1\uC6D0 : ");
+		changedEmpTxt.setText("교대 직원 : ");
 		changedEmpTxt.setBounds(40, 41, 71, 21);
 		panel.add(changedEmpTxt);
 		
@@ -76,7 +78,7 @@ public class EmployeeChange {
 		changedEmp.setBounds(111, 41, 116, 21);
 		panel.add(changedEmp);
 		
-		JButton empChangebtn = new JButton("\uAD50\uB300\uD558\uAE30");
+		JButton empChangebtn = new JButton("교대하기");
 		empChangebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

@@ -89,7 +89,7 @@ public class PasswordChange {
 		JButton btnNewButton = new JButton("\uC218\uC815");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ManagementMode mmframe = new ManagementMode();
+				Manager_UI mmframe = new Manager_UI();
 				mmframe.setVisible(true);
 				frame.dispose();
 			}
